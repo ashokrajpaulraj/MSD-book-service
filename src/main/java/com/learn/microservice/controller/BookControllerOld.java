@@ -2,6 +2,7 @@ package com.learn.microservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,14 +22,14 @@ public class BookControllerOld {
 		return "Book service home page";
 	}
 	
-	@GetMapping("/addbook")
+	@GetMapping("/addbook") //http:localhost:8081/addbook
 	public String addBook(int id, String name, String author) {
 		System.out.println("book controller add called");
 		bookService.addBook( Book.builder().id(id).name(name).author(author).build() );
 		return "book added"; 
 	}
 	
-	@GetMapping("/getbooks")
+	@GetMapping("/getbooks")//http:localhost:8081/getbooks
 	public String getAll() {
 		// create a new Gson instance
 		 Gson gson = new Gson();
